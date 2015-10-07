@@ -4,6 +4,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.ApplicationPlugin
 import org.gradle.api.plugins.JavaPlugin
+import org.gradle.api.plugins.osgi.OsgiPlugin
 
 class ShadowPlugin implements Plugin<Project> {
 
@@ -15,6 +16,9 @@ class ShadowPlugin implements Plugin<Project> {
         }
         project.plugins.withType(ApplicationPlugin) {
             project.plugins.apply(ShadowApplicationPlugin)
+        }
+        project.plugins.withType(OsgiPlugin) {
+            project.plugins.apply(ShadowOsgiPlugin)
         }
     }
 }
